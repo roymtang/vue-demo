@@ -101,7 +101,8 @@ module.exports = {
                 loader: 'babel-loader',
                 // 指定需要进行编译的文件的路径
                 // 这里表示只对src和test文件夹中的文件进行编译
-                include: [resolve('src'), resolve('test')]
+                include: [resolve('src'), resolve('test')],
+                exclude:  /node_modules/
             },
             {
                 // 对图片资源进行编译的配置
