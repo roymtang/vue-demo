@@ -102,29 +102,29 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
 module.exports = new Promise((resolve, reject) => {
     portfinder.basePort = process.env.PORT || config.dev.port
-// 这种获取port的方式会返回一个promise
-portfinder.getPort((err, port) => {
-    if (err) {
-        reject(err)
-    } else {
-        // 把获取到的端口号设置为环境变量PORT的值
-        process.env.PORT = port
-    // 重新设置webpack-dev-server的端口的值
-    devWebpackConfig.devServer.port = port
+    // 这种获取port的方式会返回一个promise
+    portfinder.getPort((err, port) => {
+        if (err) {
+            reject(err)
+        } else {
+            // 把获取到的端口号设置为环境变量PORT的值
+            process.env.PORT = port
+            // 重新设置webpack-dev-server的端口的值
+            devWebpackConfig.devServer.port = port
 
-// 将FriendlyErrorsPlugin添加到webpack的配置文件中
-devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
-    // 编译成功时候的输出信息
-    compilationSuccessInfo: {
-        messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
-    },
-    // 当编译出错的时候，根据config.dev.notifyOnErrors来确定是否需要在桌面右上角显示错误通知框
-    onErrors: config.dev.notifyOnErrors
-        ? utils.createNotifierCallback()
-        : undefined
-}))
-// resolve我们的配置文件
-resolve(devWebpackConfig)
-}
-})
+            // 将FriendlyErrorsPlugin添加到webpack的配置文件中
+            devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
+                // 编译成功时候的输出信息
+                compilationSuccessInfo: {
+                    messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
+                },
+                // 当编译出错的时候，根据config.dev.notifyOnErrors来确定是否需要在桌面右上角显示错误通知框
+                onErrors: config.dev.notifyOnErrors
+                    ? utils.createNotifierCallback()
+                    : undefined
+            }))
+            // resolve我们的配置文件
+            resolve(devWebpackConfig)
+        }
+    })
 })

@@ -3,8 +3,9 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require('webpack')
 // 生成相对于根目录的绝对路径
-function resolve (dir) {
+function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
 
@@ -102,7 +103,7 @@ module.exports = {
                 // 指定需要进行编译的文件的路径
                 // 这里表示只对src和test文件夹中的文件进行编译
                 include: [resolve('src'), resolve('test')],
-                exclude:  /node_modules/
+                exclude: /node_modules/
             },
             {
                 // 对图片资源进行编译的配置
@@ -154,5 +155,11 @@ module.exports = {
         net: 'empty',
         tls: 'empty',
         child_process: 'empty'
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        })
+    ]
 }

@@ -22,8 +22,7 @@
 
 <script>
     import Vue from 'vue'
-    import VueResource from 'vue-resource'
-    Vue.use(VueResource)
+    import $ from 'jquery'
 
     const _data = '<?xml version=“1.0” encoding = “GB2312”?>' +
                 '<GNNT>' +
@@ -47,18 +46,60 @@
         },
         methods: {
             getData: function () {
-                this.$http({
-                    url: _url,
-                    method: 'post',
-                    params: _data,
-                    credientials: false,
-                    emulateHTTP: true
-                }).then((response) => {
-                    console.log(response)
+                Vue.axios.post(_url, _data).then((response) => {
+                    var parser = new DOMParser();
+                    //var xmldoc = parser.parseFromString(response.data, 'text/xml')
+                    var xmldoc = parser.parseFromString("<gnnt><test1>1</test1><test1>2</test1></gnnt>", "text/xml")
+
+
+                    var childrens = xmldoc.childNodes;
+                    var json = "";
+
+                    for (var i = 0; i < childrens.length; i++) {
+                        var _children = childrens[i].childNodes;
+                        if (_children != null) {
+                            json += '"' + childrens[i].nodeName
+                        }
+
+                        //json += '"' + childrens[i].nodeName + '":' + '"' + childrens[i].childNodes[0].nodeValue + '"'
+                    }
+
+                    console.log(json)
+
                 }, (response) => {
                     console.log(response)
                 })
             }
         }
     }
+
+
+    function loadXml(str) {
+        if (str == null) {
+            return null;
+        }
+        var doc = str;
+        try{
+            doc = createXMLDOM();
+            doc.async = false;
+            doc.loadXML(str);
+        }catch(e){
+            doc = $.parseXML(str);
+        }
+        return doc;
+    }
+
+
+    /**
+     *xml对象转json对象
+     *xmlObj:xml对象
+     *nodename:节点路径('ROOT/ITEM')
+     *isarray:true,强制返回数组对象
+     **/
+    function xmltojson(xmlObj,nodename,isarray){
+
+
+    }
+
+
 </script>
