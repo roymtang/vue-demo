@@ -1,9 +1,9 @@
 <template>
-    <div>page2</div>
+    <div>我的订单</div>
 </template>
 
 <script>
     export default {
-        name: "page2"
+        name: "page4"
     }
 </script>

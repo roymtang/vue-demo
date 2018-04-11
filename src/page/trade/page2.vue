@@ -1,9 +1,9 @@
 <template>
-    <div>默认页面</div>
+    <div>委托管理</div>
 </template>
 
 <script>
     export default {
-        name: "page"
+        name: "page2"
     }
 </script>

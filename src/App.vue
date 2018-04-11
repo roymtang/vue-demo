@@ -8,13 +8,13 @@
                 <el-menu router>
                     <el-submenu index="1">
                         <template slot="title">交易管理</template>
-                        <el-menu-item index="1-1" :route="{path: '/nav/first'}">发布委托1</el-menu-item>
-                        <el-menu-item index="/nav/second">委托管理</el-menu-item>
-                        <el-menu-item index="1-3" :route="{path: '/nav/first'}">议价管理</el-menu-item>
-                        <el-menu-item index="1-4" :route="{path: '/nav/first'}">我的订单</el-menu-item>
-                        <el-menu-item index="1-5">我的成交</el-menu-item>
-                        <el-menu-item index="1-6">协议交收合同管理</el-menu-item>
-                        <el-menu-item index="1-7">自主交收合同管理</el-menu-item>
+                        <el-menu-item index="1-1" :route="{path: '/nav/1'}">发布委托</el-menu-item>
+                        <el-menu-item index="1-2" :route="{path: '/nav/2'}">委托管理</el-menu-item>
+                        <el-menu-item index="1-3" :route="{path: '/nav/3'}">议价管理</el-menu-item>
+                        <el-menu-item index="1-4" :route="{path: '/nav/4'}">我的订单</el-menu-item>
+                        <el-menu-item index="1-5" :route="{path: '/nav/5'}">我的成交</el-menu-item>
+                        <el-menu-item index="1-6" :route="{path: '/nav/6'}">协议交收合同管理</el-menu-item>
+                        <el-menu-item index="1-7" :route="{path: '/nav/7'}">自主交收合同管理</el-menu-item>
                     </el-submenu>
                 </el-menu>
             </el-aside>
@@ -30,7 +30,10 @@
 
     export default {
         name: 'App',
-        components: {Header}
+        components: {Header},
+        created: function() {
+            this.$router.push('/')
+        }
     }
 </script>
 

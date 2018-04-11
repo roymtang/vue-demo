@@ -1,9 +1,9 @@
 <template>
-    <div>page1</div>
+    <div>议价管理</div>
 </template>
 
 <script>
     export default {
-        name: "page1"
+        name: "page3"
     }
 </script>
