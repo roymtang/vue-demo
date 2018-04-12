@@ -8,8 +8,8 @@
                 <el-menu router>
                     <el-submenu index="1">
                         <template slot="title">交易管理</template>
-                        <el-menu-item index="1-1" :route="{path: '/nav/1'}">发布委托</el-menu-item>
-                        <el-menu-item index="1-2" :route="{path: '/nav/2'}">委托管理</el-menu-item>
+                        <el-menu-item index="1-1" :route="{path: '/nav/1'}">委托管理</el-menu-item>
+                        <el-menu-item index="1-2" :route="{path: '/nav/2'}">发布委托</el-menu-item>
                         <el-menu-item index="1-3" :route="{path: '/nav/3'}">议价管理</el-menu-item>
                         <el-menu-item index="1-4" :route="{path: '/nav/4'}">我的订单</el-menu-item>
                         <el-menu-item index="1-5" :route="{path: '/nav/5'}">我的成交</el-menu-item>
